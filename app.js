@@ -2,6 +2,9 @@ const btn = document.querySelector(".btn")
 const link = document.querySelector(".link")
 
 function removeSpacesAndParentheses(str) {
+  if (str.charAt(0).toLowerCase() === "x") {
+    str = str.substring(1);
+  }
   return str.replace(/\s/g, '').replace(/[()]/g, '');
 }
 
