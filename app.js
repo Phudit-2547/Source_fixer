@@ -1,19 +1,22 @@
 const btn = document.querySelector(".btn")
 const link = document.querySelector(".link")
 
-function removeSpacesAndParentheses(str) {
+function fixer(str) {
   if (str.charAt(0).toLowerCase() === "x") {
     str = str.substring(1);
+  }
+  if (!str.match(/^[a-zA-Z]+:\/\//)) {
+    str = 'https://' + str;
   }
   return str.replace(/\s/g, '').replace(/[()]/g, '');
 }
 
 btn.addEventListener("click", (e) => {
-    let couponValue = removeSpacesAndParentheses(link.value);
-    link.value = couponValue;
+    let myUrl = fixer(link.value);
+    link.value = myUrl;
     link.select()
     link.setSelectionRange(0, 999999)
-    navigator.clipboard.writeText(couponValue)
+    navigator.clipboard.writeText(myUrl)
     btn.textContent = "Copied!!"
     setTimeout(() => {
         btn.textContent = "Copy"
