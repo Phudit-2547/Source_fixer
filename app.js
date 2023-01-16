@@ -2,7 +2,10 @@ const btn = document.querySelector(".btn")
 const link = document.querySelector(".link")
 
 function fixer(str) {
-  if (!str.match(/^[a-zA-Z]+:///)) {
+  if (str.charAt(0).toLowerCase() === "x") {
+    str = str.substring(1);
+  }
+  if (!str.match(/^[a-zA-Z]+:\/\//)) {
     str = 'https://' + str;
   }
   return str.replace(/\s/g, '').replace(/[()]/g, '');
