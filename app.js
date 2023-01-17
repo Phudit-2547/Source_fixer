@@ -2,10 +2,8 @@ const btn = document.querySelector(".btn")
 const link = document.querySelector(".link")
 
 function fixer(str) {
-  if (str.charAt(0).toLowerCase() === "x") {
-    str = str.substring(1);
-  }
-  if (!str.match(/^[a-zA-Z]+:\/\//)) {
+  str = str.replace(/.*(https:\/\/)/, "https://"); // remove any text before https://
+  if (!str.match(/^https:\/\//)) { // if input don't have https: add it
     str = 'https://' + str;
   }
   return str.replace(/\s/g, '').replace(/[()]/g, '');
