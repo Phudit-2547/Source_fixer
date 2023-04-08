@@ -8,7 +8,7 @@ function fixer(str) {
   }
   str = str.replace(/\s/g, ''); // remove any whitespace
   str = str.replace(/[()]/g, ''); // remove any parentheses
-  str = str.replace(/(https:\/\/www)\//, '$1.'); // replace only forward slash after https://www with dot
+  str = str.replace(/(https:\/\/www\.)\//, '$1'); // replace any forward slashes after https://www with just a dot
   str = str.replace(/\/\./g, '/'); // replace any slashes before dots with just a slash
   str = str.replace(/(\.\/)/g, '.'); // replace any dot-slash sequences with just a dot
   
@@ -22,6 +22,7 @@ function fixer(str) {
   }
   return str;
 }
+
 
 btn.addEventListener("click", (e) => {
   let myUrl = fixer(link.value);
