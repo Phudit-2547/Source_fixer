@@ -11,9 +11,9 @@ function fixer(str) {
   str = str.replace(/\/\./g, '/'); // replace any slashes before dots with just a slash
   str = str.replace(/(\.\/)/g, '.'); // replace any dot-slash sequences with just a dot
   
-  if (str.match(/^(https:\/\/)?(www\.)?pixiv\.net/)) {
+   if (str.match(/^(https:\/\/)?(www\.)?pixiv\.net/)) {
     // format Pixiv link
-    str = str.replace(/(https:\/\/)?(www\.)?pixiv\.net\/.*\/(\d+)/, 'https://www.pixiv.net/en/artworks/$3');
+    str = str.replace(/(https:\/\/)?(www\.)?pixiv\.net\/en\/artworks\/(\d+)/, 'https://www.pixiv.net/en/artworks/$3');
   } else if (str.match(/^(https:\/\/)?(www\.)?twitter\.com/)) {
     // format Twitter link
     str = str.replace(/(https:\/\/)?(www\.)?twitter\.com\/.*?\/status\/(\d+)/, 'https://twitter.com/$1/status/$2');
