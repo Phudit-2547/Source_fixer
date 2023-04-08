@@ -8,10 +8,11 @@ function fixer(str) {
   }
   str = str.replace(/\s/g, ''); // remove any whitespace
   str = str.replace(/[()]/g, ''); // remove any parentheses
-  str = str.replace(/\/\./g, '/'); // remove any slashes before dots
-  str = str.replace(/(\.)(\/)/g, '$1'); // remove any dots before slashes
+  str = str.replace(/\/\./g, '/'); // replace any slashes before dots with just a slash
+  str = str.replace(/(\.\/)/g, '.'); // replace any dot-slash sequences with just a dot
   return str;
 }
+
 
 
 
