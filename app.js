@@ -1,22 +1,18 @@
 const btn = document.querySelector(".btn");
 const link = document.querySelector(".link");
 
-function fixURL(str) {
-  let output = "";
-  let regex = /(https?:\/\/)([\w\-.]+)(\/[\w\-.\/]*)/g; // Regular expression to match URLs
-  let match = regex.exec(str); // Find the first match in the input string
-  
-  if (match !== null) { // If a match is found, fix the URL
-    let domain = match[2];
-    domain = domain.replace("(", "").replace(")", ""); // Remove parentheses, if any
-    output = str.replace(match[2], domain);
+function fixer(str) {
+  str = str.replace(/.*(https:\/\/)/, "https://"); // remove any text before https://
+  if (!str.match(/^https:\/\//)) { // if input don't have https: add it
+    str = 'https://' + str;
   }
-  
-  return output;
+  str = str.replace(/\s/g, ''); // remove any whitespace
+  str = str.replace(/[()]/g, ''); // remove any parentheses
+  return str;
 }
 
 btn.addEventListener("click", (e) => {
-  let myUrl = fixURL(link.value);
+  let myUrl = fixer(link.value);
   link.value = myUrl;
   link.select();
   link.setSelectionRange(0, 999999);
