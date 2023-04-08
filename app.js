@@ -8,10 +8,11 @@ function fixer(str) {
   }
   str = str.replace(/\s/g, ''); // remove any whitespace
   str = str.replace(/[()]/g, ''); // remove any parentheses
+  str = str.replace(/(https:\/\/www)\//, '$1.'); // replace only forward slash after https://www with dot
   str = str.replace(/\/\./g, '/'); // replace any slashes before dots with just a slash
   str = str.replace(/(\.\/)/g, '.'); // replace any dot-slash sequences with just a dot
   
-   if (str.match(/^(https:\/\/)?(www\.)?pixiv\.net/)) {
+  if (str.match(/^(https:\/\/)?(www\.)?pixiv\.net/)) {
     // format Pixiv link
     str = str.replace(/(https:\/\/)?(www\.)?pixiv\.net\/en\/artworks\/(\d+)/, 'https://www.pixiv.net/en/artworks/$3');
     str = str.replace(/www\//, 'www.'); // replace "www/" with "www."
