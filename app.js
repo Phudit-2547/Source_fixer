@@ -2,20 +2,21 @@ const btn = document.querySelector(".btn");
 const link = document.querySelector(".link");
 
 function fixer(str) {
-  var regex = /^(https?:\/\/)?([\w.-]+)(.*)$/;
+  var regex = /(https?:\/\/)?([\w.-]+)(\/[\w-.\/]*)?/i;
   var matches = str.match(regex);
   if (!matches) {
-    return null; // return null if the input string doesn't contain a valid URL
+    return null;
   }
-  var protocol = matches[1] || 'https://'; // if protocol is missing, assume https://
-  var domain = matches[2].replace(/\//g, ''); // remove any forward slashes in the domain name
-  var path = matches[3].replace(/\s/g, '').replace(/[()]/g, ''); // remove any whitespace and parentheses from the path
-  path = path.replace(/(\.\/)/g, '.'); // replace any dot-slash sequences with just a dot
+  var protocol = matches[1] || 'https://';
+  var domain = matches[2];
+  var path = matches[3] || '';
+  path = path.replace(/\s/g, '').replace(/[()]/g, '');
+  path = path.replace(/(\.\/)/g, '.');
   
   if (domain === 'www.pixiv.net') {
     // format Pixiv link
     path = path.replace(/^\/?(en\/artworks\/\d+)/, '/en/artworks/$1');
-    domain = 'www.pixiv.net'; // replace "www/" with "www."
+    domain = 'www.pixiv.net';
   } else if (domain === 'www.twitter.com') {
     // format Twitter link
     path = path.replace(/^\/?(.*?)\/status\/(\d+)/, '/$1/status/$2');
@@ -24,6 +25,7 @@ function fixer(str) {
   
   return protocol + domain + path;
 }
+
 
 btn.addEventListener("click", (e) => {
   let myUrl = fixer(link.value);
