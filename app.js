@@ -9,12 +9,11 @@ function fixer(str) {
   str = str.replace(/\s/g, ''); // remove any whitespace
   str = str.replace(/[()]/g, ''); // remove any parentheses
   str = str.replace(/\/\./g, '/'); // replace any slashes before dots with just a slash
-  str = str.replace(/(\.\/)/g, '.'); // replace any dot-slash sequences with just a dot
+  str = str.replace(/\.\/+/g, ''); // remove any dot-slash sequences
+  str = str.replace(/\/+/g, '/'); // remove any double slashes
+  str = str.replace(/https:\/\/(www\.)?\//, "https://www."); // replace first occurrence of https://www./ with https://www/
   return str;
 }
-
-
-
 
 btn.addEventListener("click", (e) => {
   let myUrl = fixer(link.value);
