@@ -2,7 +2,7 @@ const btn = document.querySelector(".btn");
 const link = document.querySelector(".link");
 
 function fixer(str) {
-  var regex = /(https?:\/\/)?([\w.-]+)(\/[\w-.\/]*)?/i;
+  var regex = /(https?:\/\/)?([\w.-]+)(\/[\w.-\/]*)?/i;
   var matches = str.match(regex);
   if (!matches) {
     return null;
