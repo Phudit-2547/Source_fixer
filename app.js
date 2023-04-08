@@ -2,6 +2,8 @@ const btn = document.querySelector(".btn");
 const link = document.querySelector(".link");
 
 function fixer(str) {
+   // remove any text before "https://www."
+  str = str.replace(/.*?(https?:\/\/www\..*)/gi, '$1');
   str = str.replace(/\n/g, ''); // remove any newline characters
   str = str.replace(/[()]/g, ''); // remove any parentheses
   str = str.replace(/(https:\/\/www\.)\//g, '$1.'); // replace all forward slashes after https://www with a dot
