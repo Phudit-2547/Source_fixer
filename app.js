@@ -8,8 +8,10 @@ function fixer(str) {
   }
   str = str.replace(/\s/g, ''); // remove any whitespace
   str = str.replace(/[()]/g, ''); // remove any parentheses
+  str = str.replace(/\/\./g, '/'); // remove any slashes before dots
   return str;
 }
+
 
 btn.addEventListener("click", (e) => {
   let myUrl = fixer(link.value);
