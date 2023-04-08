@@ -12,7 +12,7 @@ function fixer(str) {
   var path = matches[3] || '';
   path = path.replace(/\s/g, '').replace(/[()]/g, '');
   path = path.replace(/(\.\/)/g, '.');
-  
+
   if (domain === 'www.pixiv.net') {
     // format Pixiv link
     path = path.replace(/^\/?(en\/artworks\/\d+)/, '/en/artworks/$1');
@@ -22,10 +22,9 @@ function fixer(str) {
     path = path.replace(/^\/?(.*?)\/status\/(\d+)/, '/$1/status/$2');
     domain = 'www.twitter.com';
   }
-  
+
   return protocol + domain + path;
 }
-
 
 btn.addEventListener("click", (e) => {
   let myUrl = fixer(link.value);
