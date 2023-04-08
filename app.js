@@ -14,6 +14,7 @@ function fixer(str) {
    if (str.match(/^(https:\/\/)?(www\.)?pixiv\.net/)) {
     // format Pixiv link
     str = str.replace(/(https:\/\/)?(www\.)?pixiv\.net\/en\/artworks\/(\d+)/, 'https://www.pixiv.net/en/artworks/$3');
+    str = str.replace(/www\//, 'www.'); // replace "www/" with "www."
   } else if (str.match(/^(https:\/\/)?(www\.)?twitter\.com/)) {
     // format Twitter link
     str = str.replace(/(https:\/\/)?(www\.)?twitter\.com\/.*?\/status\/(\d+)/, 'https://twitter.com/$1/status/$2');
