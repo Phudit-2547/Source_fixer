@@ -4,7 +4,7 @@ const link = document.querySelector(".link");
 function fixer(str) {
   str = str.replace(/\n/g, ''); // remove any newline characters
   str = str.replace(/[()]/g, ''); // remove any parentheses
-  str = str.replace(/(https:\/\/www\.)\//g, '$1'); // replace any forward slashes after https://www with just a dot
+  str = str.replace(/(https:\/\/www\.)\//g, '$1.'); // replace all forward slashes after https://www with a dot
   str = str.replace(/\/\./g, '/'); // replace any slashes before dots with just a slash
   str = str.replace(/(\.\/)/g, '.'); // replace any dot-slash sequences with just a dot
   
@@ -31,7 +31,6 @@ function fixer(str) {
 
   return protocol + domain + path;
 }
-
 
 btn.addEventListener("click", (e) => {
   let myUrl = fixer(link.value);
