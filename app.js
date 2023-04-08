@@ -9,8 +9,10 @@ function fixer(str) {
   str = str.replace(/\s/g, ''); // remove any whitespace
   str = str.replace(/[()]/g, ''); // remove any parentheses
   str = str.replace(/\/\./g, '/'); // remove any slashes before dots
+  str = str.replace(/(\.)(\/)/g, '$1'); // remove any dots before slashes
   return str;
 }
+
 
 
 btn.addEventListener("click", (e) => {
